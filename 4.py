@@ -49,6 +49,7 @@ def get_upcoming_birthdays():
                 "name": user["name"],
                 "congratulation_date": congratulation_date_str
             })
-    print(upcoming_birthdays)  # Виводимо список майбутніх днів народження
+    return(upcoming_birthdays)  # Виводимо список майбутніх днів народження
 
-get_upcoming_birthdays()
+result = get_upcoming_birthdays()
+print(result)
