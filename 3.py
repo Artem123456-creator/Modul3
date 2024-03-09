@@ -3,6 +3,8 @@ import re
 def normalize_phone(phone_number):
     cleaned_phone_numbers = re.sub(r'[^0-9+]', '', phone_number)
 
+    if cleaned_phone_numbers.startswith('380'):
+        cleaned_phone_numbers = '+' + cleaned_phone_numbers
     
     if not cleaned_phone_numbers.startswith('+'):
         cleaned_phone_numbers = '+38' + cleaned_phone_numbers
