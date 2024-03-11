@@ -18,7 +18,7 @@ def find_next_weekday(d, weekday: int):  # Функція для знаходж�
     return d + timedelta(days=days_ahead)  # Повертаємо нову дату
 
 
-def prepered():
+def prepared(users):
     prepared_users = []  # Список підготовлених користувачів
     for user in users:  # Ітерація по кожному користувачеві зі списку
         try:
@@ -29,12 +29,11 @@ def prepered():
     return prepared_users
 
 
-def get_upcoming_birthdays():
+def get_upcoming_birthdays(users):
     days = 7  # Кількість днів для перевірки на наближені дні народження
     today = datetime.today().date()  # Поточна дата
-    prepared_users = prepered()
     upcoming_birthdays = []  # Список майбутніх днів народження
-    for user in prepared_users:  # Ітерація по підготовленим користувачам
+    for user in prepared(users):  # Ітерація по підготовленим користувачам
         birthday_this_year = user["birthday"].replace(year=today.year)  # Заміна року на поточний для дня народження цього року
 
         if birthday_this_year < today:  # Якщо дата народження вже пройшла цього року
@@ -51,5 +50,5 @@ def get_upcoming_birthdays():
             })
     return(upcoming_birthdays)  # Виводимо список майбутніх днів народження
 
-result = get_upcoming_birthdays()
-print(result)
+upcoming_birthdays = get_upcoming_birthdays(users)
+print("Список привітань на цьому тижні:", upcoming_birthdays)
